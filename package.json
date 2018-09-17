@@ -22,11 +22,13 @@
   },
   "homepage": "https://github.com/remap-app/graphql-api#readme",
   "dependencies": {
-    "apollo-server": "^2.0.8",
-    "graphql": "^14.0.2"
+    "apollo-server-koa": "^2.0.7",
+    "graphql": "^14.0.2",
+    "koa": "^2.5.3"
   },
   "devDependencies": {
     "@types/graphql": "^14.0.0",
+    "@types/koa": "^2.0.46",
     "@types/node": "^10.10.0",
     "ts-node-dev": "^1.0.0-pre.30",
     "typescript": "^3.0.3"

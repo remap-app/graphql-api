@@ -1,17 +1,17 @@
-import { ApolloServer } from 'apollo-server-koa'
-import * as Koa from 'koa'
+import { ApolloServer } from 'apollo-server-micro'
+import * as compose from 'micro-compose'
+import { handleErrors } from 'micro-errors'
+import * as cors from 'micro-cors-multiple-allow-origin'
 import { typeDefs, resolvers } from './schema'
 
-const server = new ApolloServer({ typeDefs, resolvers })
-const app = new Koa()
-const {
-  PORT: port = 4000,
-  GRAPHQL_PATH: graphqlPath = '/graphql',
-  APP_ORIGIN: origin = 'http://localhost',
-} = process.env
+const { CORS_ALLOWED_ORIGINS = '', NODE_ENV = 'development' } = process.env
 
-server.applyMiddleware({ app, path: graphqlPath })
+const apolloServer = new ApolloServer({ typeDefs, resolvers })
 
-app.listen({ port }, () => {
-  console.log(`🚀 Server ready at ${origin}:${port}${server.graphqlPath}`)
-})
+module.exports = compose(
+  handleErrors({ debug: NODE_ENV !== 'production' }),
+  cors({
+    allowMethods: ['GET', 'POST', 'OPTIONS'],
+    origin: CORS_ALLOWED_ORIGINS.split(','),
+  }),
+)(apolloServer.createHandler())

@@ -22,17 +22,20 @@
   },
   "homepage": "https://github.com/remap-app/graphql-api#readme",
   "dependencies": {
+    "@remap/authenticate-middleware": "^1.0.2",
     "apollo-server-micro": "^2.1.0",
     "graphql": "^14.0.2",
     "micro": "^9.3.3",
     "micro-compose": "^0.0.3",
     "micro-cors-multiple-allow-origin": "^1.0.1",
-    "micro-errors": "^2.0.0"
+    "micro-errors": "^2.0.0",
+    "node-fetch": "^2.2.0"
   },
   "devDependencies": {
     "@types/graphql": "^14.0.0",
     "@types/micro": "^7.3.2",
     "@types/node": "^10.10.2",
+    "@types/node-fetch": "^2.1.2",
     "micro-dev": "^3.0.0",
     "ts-node-dev": "^1.0.0-pre.30",
     "typescript": "^3.0.3"

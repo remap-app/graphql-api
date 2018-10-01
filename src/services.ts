@@ -1,0 +1,7 @@
+import ReMap from '@remap/services'
+
+export const client = new ReMap({
+  RESTAURANTS_SERVICE_ORIGIN: process.env.RESTAURANTS_SERVICE_ORIGIN,
+  STOCKS_SERVICE_ORIGIN: process.env.STOCKS_SERVICE_ORIGIN,
+  AUTHENTICATION_SERVICE_ORIGIN: process.env.AUTHENTICATION_SERVICE_ORIGIN,
+})

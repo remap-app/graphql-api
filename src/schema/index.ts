@@ -1,7 +1,6 @@
 import { gql } from 'apollo-server-micro'
 
 export const typeDefs = gql`
-
 type CouponUrl {
   desktop: String
   mobile: String
@@ -27,15 +26,11 @@ type Restaurant {
   non_smoking: String
   lunch: String
   children: String
+  is_stocked: Boolean!
 }
 
 type Query {
-  restaurants: [Restaurant]
+  restaurant(id: ID!): Restaurant
+  restaurants(latitude: String!, longitude: String!, range: Int, page: Int, perPage: Int): [Restaurant]
 }
 `
-
-export const resolvers = {
-  Query: {
-    restaurants: () => [], // tmp
-  },
-}

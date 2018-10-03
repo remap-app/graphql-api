@@ -10,7 +10,7 @@ const restaurants = async (
     longitude: args.longitude,
     range: args.range,
     page: args.page,
-    perPage: args.perPage,
+    per_page: args.perPage,
   })
 
   const stocks = await client.getStocks(
@@ -22,7 +22,7 @@ const restaurants = async (
 
   return restaurnts.map((restaurant: any/* TODO */) => {
     return stocks.find((s: any/* TODO */) => s.restaurant_id === restaurant.id)
-      ? { ...restaurant, isStocked: true }
+      ? { ...restaurant, is_stocked: true }
       : restaurant
   })
 }
